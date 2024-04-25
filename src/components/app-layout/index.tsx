@@ -1,40 +1,55 @@
-'use client'
+"use client";
 
-import { ReactNode, useMemo, useState } from "react"
+import { Zap } from "lucide-react";
+import { ReactNode, useMemo, useState } from "react";
+import { SidebarContainer } from "../sidebar/sidebar-container";
+import { SidebarItem } from "../sidebar/sidebar-item";
+import { sidebarItems } from "../sidebar/sidebar-items-list";
 
 interface AppLayoutProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export function AppLayout({ children }: AppLayoutProps) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
-  const onToggle = () => setIsOpen(prev => !prev)
+  const onToggle = () => setIsOpen((prev) => !prev);
 
   const { content, sidebar } = useMemo(() => {
-    const sidebar = isOpen? "max-w-[280px]" : "max-w-[70px]"
-    const content = isOpen? "ml-[280px]" : "ml-[70px]"
-    return { sidebar, content }
-  }, [isOpen])
+    const sidebar = isOpen
+      ? "max-w-[280px]"
+      : "max-w-[max-content] overflow-hidden";
+    const content = isOpen ? "ml-[300px]" : "ml-[90px]";
+    return { sidebar, content };
+  }, [isOpen]);
 
-  return(
+  return (
     <>
-      <aside 
-        onClick={onToggle} 
-        className={`fixed top-0 left-0 col-span-2 max-w-[280px] bg-red-400 w-full h-full ${sidebar} transition-width ease-in-out`}
-      >
-        left sidebar
-      </aside>
+      <SidebarContainer onToggle={onToggle} isOpen={isOpen}>
+        <SidebarItem
+          disableHighlighting
+          isOpen={isOpen}
+          title="Planorama"
+          href="/dashboard"
+          icon={
+            <div className="bg-dark-magenta p-2 rounded-full text-neutral-50">
+              <Zap size={16} />
+            </div>
+          }
+        />
+
+        <div className="mt-16 flex flex-col w-full items-start gap-2">
+          {sidebarItems.map((item) => (
+            <SidebarItem key={item.title} isOpen={isOpen} {...item} />
+          ))}
+        </div>
+      </SidebarContainer>
 
       <section className={`flex-1 col-span-10 ${content}`}>
-        <header className="bg-yellow-300 w-full h-20">
-          Header
-        </header>
+        <header className="bg-yellow-300 w-full h-20">Header</header>
 
-        <section className="bg-blue-400 w-full h-full">
-          {children}
-        </section>
+        <section className="bg-blue-400 w-full h-full">{children}</section>
       </section>
     </>
-  )
+  );
 }
