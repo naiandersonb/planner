@@ -43,7 +43,7 @@ export function AppLayout({ children }: AppLayoutProps) {
       <section className={`flex-1 col-span-10 ${content}`}>
         <header className="bg-yellow-300 w-full h-20">Header</header>
 
-        <section className="bg-blue-400 w-full h-full">{children}</section>
+        <section>{children}</section>
       </section>
     </>
   );
