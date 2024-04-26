@@ -25,18 +25,18 @@ export function AppLayout({ children }: AppLayoutProps) {
 
   return (
     <>
-      <SidebarContainer onToggle={onToggle} isOpen={isOpen}>
-        <SidebarItem
-          isOpen={isOpen}
-          title="Planorama"
-          href="/dashboard"
-          icon={
+      <SidebarContainer
+        onToggle={onToggle}
+        isOpen={isOpen}
+        logo={
+          <div className="flex items-center text-neutral-50 gap-2">
             <div className="bg-rose-500 p-2 rounded-full">
               <Zap size={16} />
             </div>
-          }
-        />
-
+            <span className="font-bold">Planorama</span>
+          </div>
+        }
+      >
         <div className="mt-16 flex flex-col w-full items-start gap-2">
           {sidebarItems.map((item) => (
             <SidebarItem key={item.title} isOpen={isOpen} {...item} />
