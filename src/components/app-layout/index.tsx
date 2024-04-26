@@ -37,7 +37,7 @@ export function AppLayout({ children }: AppLayoutProps) {
           </div>
         }
       >
-        <div className="mt-16 flex flex-col w-full items-start gap-2">
+        <div className="mt-10 flex flex-col w-full items-start gap-2">
           {sidebarItems.map((item) => (
             <SidebarItem key={item.title} isOpen={isOpen} {...item} />
           ))}

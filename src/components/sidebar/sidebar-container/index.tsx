@@ -56,7 +56,7 @@ export function SidebarContainer({
       variants={containerVariants}
       animate={containerControls}
       initial="close"
-      className="bg-dark-primary flex flex-col z-10 gap-20 p-4 absolute top-0 left-0 h-full shadow shadow-neutral-600"
+      className="bg-dark-primary flex flex-col z-10 gap-8 p-4 absolute top-0 left-0 h-full shadow shadow-neutral-600"
     >
       <div className="flex flex-row w-full justify-between place-items-center">
         {isOpen && logo}
