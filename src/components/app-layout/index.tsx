@@ -15,12 +15,8 @@ export function AppLayout({ children }: AppLayoutProps) {
 
   const onToggle = () => setIsOpen((prev) => !prev);
 
-  const { content, sidebar } = useMemo(() => {
-    const sidebar = isOpen
-      ? "max-w-[280px]"
-      : "max-w-[max-content] overflow-hidden";
-    const content = isOpen ? "ml-[300px]" : "ml-[90px]";
-    return { sidebar, content };
+  const content = useMemo(() => {
+    return isOpen ? "md:ml-[17rem]" : "md:ml-[6rem]";
   }, [isOpen]);
 
   return (
