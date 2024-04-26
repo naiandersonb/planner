@@ -27,12 +27,11 @@ export function AppLayout({ children }: AppLayoutProps) {
     <>
       <SidebarContainer onToggle={onToggle} isOpen={isOpen}>
         <SidebarItem
-          disableHighlighting
           isOpen={isOpen}
           title="Planorama"
           href="/dashboard"
           icon={
-            <div className="bg-dark-magenta p-2 rounded-full text-neutral-50">
+            <div className="bg-rose-500 p-2 rounded-full">
               <Zap size={16} />
             </div>
           }

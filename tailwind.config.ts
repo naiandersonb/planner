@@ -16,8 +16,6 @@ const config: Config = {
       colors: {
         'dark-primary': '#000',
         'dark-secondary': '#0E1011',
-        'dark-magenta': '#D03572',
-        'light-magenta': '#E64F6D'
       },
     },
   },
